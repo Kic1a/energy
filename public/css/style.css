@@ -1,15 +1,17 @@
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
+    background-image: url('back.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
 
 .login-container {
-    background-color: #fff;
+    background: transparent;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -17,7 +19,7 @@ body {
     text-align: center;
 }
 
-h2 {
+.h2 {
     margin-bottom: 20px;
     color: #333;
 }
@@ -46,7 +48,7 @@ input[type="password"] {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: plum;
     color: #fff;
     border: none;
     border-radius: 5px;
