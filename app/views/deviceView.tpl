@@ -1,23 +1,7 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+{extends file="main.tpl"}
 
-<head>
-	<meta charset="utf-8"/>
-	<title>Hello World | Amelia framework</title>
-</head>
-
-<body>
-    
-    My value: {$value}
-    
-    {if $msgs->isInfo()}
-        <ul>
-        {foreach $msgs->getMessages() as $msg}
-            <li>{$msg->text}</li>
-        {/foreach}
-        </ul>
-    {/if}
-
-</body>
-
-</html>
+{block name=content}
+   
+    <a href="{$conf->action_root}logout" class="logout_button">Wyloguj</a>  
+   
+{/block}

@@ -6,23 +6,22 @@ use core\App;
 use core\Message;
 use core\Utils;
 
-/**
- * HelloWorld built in Amelia - sample controller
- *
- * @author Przemysław Kudłacik
- */
 class deviceCtrl {
     
     public function action_deviceList() {
-		        
-        $variable = 123;
-        
-        App::getMessages()->addMessage(new Message("Hello world message", Message::INFO));
-        Utils::addInfoMessage("Or even easier message :-)");
-        
-        App::getSmarty()->assign("value",$variable);        
-        App::getSmarty()->display("deviceView.tpl");
-        
+        // Wywołanie metody renderującej widok
+        $this->generateView();
+    }
+
+    // Osobna metoda do renderowania widoku
+    public function generateView() {
+        App::getSmarty()->display('deviceView.tpl');
     }
     
+    public function action_logout() {
+        // Zakończenie sesji
+        session_destroy();
+        // Przekierowanie na stronę logowania
+        App::getRouter()->redirectTo('loginView');
+    }
 }
