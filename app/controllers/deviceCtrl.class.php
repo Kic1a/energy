@@ -9,15 +9,23 @@ use core\Utils;
 class deviceCtrl {
     
     public function action_deviceList() {
-        // Wywołanie metody renderującej widok
+        // Przykładowe dane 
+        $devices = [
+            ['id' => 1, 'name' => 'Kocioł indukcyjny', 'user' => 'Jan Kowalski', 'power' => 150, 'location' => 'Kotłownia olejowa'],
+        ];
+
+       
+        App::getSmarty()->assign('devices', $devices);
+
+       
         $this->generateView();
     }
 
-    // Osobna metoda do renderowania widoku
+  
     public function generateView() {
         App::getSmarty()->display('deviceView.tpl');
     }
-    
+
     public function action_logout() {
         // Zakończenie sesji
         session_destroy();
