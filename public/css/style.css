@@ -85,7 +85,7 @@ table {
 th, td {
     padding: 12px 15px;
     border-bottom: 1px solid #ddd;
-    text-align: left; /* Ustawienie wyrównania tekstu w komórkach */
+    text-align: left; 
 }
 
 th {
@@ -133,4 +133,3 @@ tr:hover {
 .add_button:hover {
     background-color: #005f75;
 }
-

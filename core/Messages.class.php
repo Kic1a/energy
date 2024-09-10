@@ -29,6 +29,37 @@ class Messages {
 	public function getNumberOfWarnings() { return $this->nwar; }	
 	public function getNumberOfInfos() { return $this->ninf; }	
 	
+        public function getErrors() {
+    $errors = [];
+    foreach ($this->m as $message) {
+        if ($message->type == Message::ERROR) {
+            $errors[] = $message->text;
+        }
+    }
+    return $errors;
+}
+
+public function getWarnings() {
+    $warnings = [];
+    foreach ($this->m as $message) {
+        if ($message->type == Message::WARNING) {
+            $warnings[] = $message->text;
+        }
+    }
+    return $warnings;
+}
+
+public function getInfos() {
+    $infos = [];
+    foreach ($this->m as $message) {
+        if ($message->type == Message::INFO) {
+            $infos[] = $message->text;
+        }
+    }
+    return $infos;
+}
+
+        
 	public function clear() {
 		$this->m = array ();
 		$this->n = 0;

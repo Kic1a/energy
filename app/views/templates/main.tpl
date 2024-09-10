@@ -11,7 +11,7 @@
 		{block name=content} ... {/block}
 	</div>
 </body>
-        {include file='messages.tpl'}
+       
         
         {block name=bottom} {/block}
 </html>

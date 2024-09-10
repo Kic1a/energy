@@ -1,3 +1,4 @@
+
 {if $msgs->isError()}
 <div class="messages error">
 	<ol>
