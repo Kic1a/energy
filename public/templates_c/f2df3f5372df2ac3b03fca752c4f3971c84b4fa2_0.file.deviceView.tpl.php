@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-09-09 22:55:57
+/* Smarty version 4.3.4, created on 2024-09-15 16:10:42
   from 'D:\Programs Science\xamp\htdocs\energy\app\views\deviceView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_66df60dd99a525_45227163',
+  'unifunc' => 'content_66e6eae2448cb5_19415096',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f2df3f5372df2ac3b03fca752c4f3971c84b4fa2' => 
     array (
       0 => 'D:\\Programs Science\\xamp\\htdocs\\energy\\app\\views\\deviceView.tpl',
-      1 => 1725915356,
+      1 => 1726409439,
       2 => 'file',
     ),
   ),
@@ -20,28 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_66df60dd99a525_45227163 (Smarty_Internal_Template $_smarty_tpl) {
+function content_66e6eae2448cb5_19415096 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_61923682766df60dd98e874_75818895', 'content');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_64170910866e6eae243a379_38151531', 'content');
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild($_smarty_tpl, "main.tpl");
 }
 /* {block 'content'} */
-class Block_61923682766df60dd98e874_75818895 extends Smarty_Internal_Block
+class Block_64170910866e6eae243a379_38151531 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'content' => 
   array (
-    0 => 'Block_61923682766df60dd98e874_75818895',
+    0 => 'Block_64170910866e6eae243a379_38151531',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_checkPlugins(array(0=>array('file'=>'D:\\ProgramsScience\\xamp\\htdocs\\energy\\lib\\smarty\\plugins\\modifier.count.php','function'=>'smarty_modifier_count',),));
 ?>
 
 
@@ -50,14 +51,16 @@ logout" class="logout_button">Wyloguj</a>
     
     <h2>Lista urządzeń</h2>
 
+ <?php if ((isset($_smarty_tpl->tpl_vars['devices']->value)) && smarty_modifier_count($_smarty_tpl->tpl_vars['devices']->value) > 0) {?>
     <table>
         <thead>
             <tr>
-                <th>Nazwa urządzenia</th>
-                <th>Użytkownik</th>
-                <th>Moc [kW]</th>
-                <th>Lokalizacja</th>
-                <th>Akcje</th>
+                <th>device_name</th>
+                <th>rated_power [kW]</th>
+                <th>location</th>
+                <th>first_name</th>
+                <th>last_name</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -68,21 +71,24 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['device']->value)
 $_smarty_tpl->tpl_vars['device']->do_else = false;
 ?>
             <tr>
-                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['name'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['device_name'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['user'];?>
-</td>
-                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['power'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['rated_power'];?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['device']->value['location'];?>
 </td>
+                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['first_name'];?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['last_name'];?>
+</td>
                 <td>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-deviceEdit/<?php echo $_smarty_tpl->tpl_vars['device']->value['id'];?>
+deviceEdit/<?php echo $_smarty_tpl->tpl_vars['device']->value['id_device'];?>
 " class="edit_button">Edytuj</a>
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-deviceDelete/<?php echo $_smarty_tpl->tpl_vars['device']->value['id'];?>
-" class="delete_button">Usuń</a>
+                   <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
+deviceDelete/<?php echo $_smarty_tpl->tpl_vars['device']->value['id_device'];?>
+" class="delete_button" onclick="return confirm('Czy na pewno chcesz usunąć to urządzenie?')">Usuń</a>
+
                 </td>
             </tr>
             <?php
@@ -90,20 +96,24 @@ deviceDelete/<?php echo $_smarty_tpl->tpl_vars['device']->value['id'];?>
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </tbody>
     </table>
+<?php } else { ?>
+    <p>Brak urządzeń do wyświetlenia.</p>
+<?php }?>
+
         
     <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
 deviceAdd" class="add_button">Dodaj nowe urządzenie</a>
 
-    <h2>Zużycie energii</h2>
+<h2>Zużycie energii</h2>
 
+<?php if ((isset($_smarty_tpl->tpl_vars['devices']->value)) && smarty_modifier_count($_smarty_tpl->tpl_vars['devices']->value) > 0) {?>
     <table>
         <thead>
             <tr>
-                <th>Nazwa urządzenia</th>
-                <th>Energia skonsumowana [kWh]</th>
-                <th>Energia wygenerowana [kWh]</th>
-                <th>Uwagi (data)</th>
-                <th>Akcje</th>
+                <th>device_name</th>
+                <th>energy_produced [kWh]</th>
+                <th>energy_consumed [kWh]</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -114,34 +124,30 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['device']->value)
 $_smarty_tpl->tpl_vars['device']->do_else = false;
 ?>
             <tr>
-                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['name'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['device']->value['device_name'];?>
 </td>
-                <td><?php if ((isset($_smarty_tpl->tpl_vars['device']->value['energy_use']))) {
-echo $_smarty_tpl->tpl_vars['device']->value['energy_use'];
+                <td><?php if ((isset($_smarty_tpl->tpl_vars['device']->value['energy_produced']))) {
+echo $_smarty_tpl->tpl_vars['device']->value['energy_produced'];
 } else { ?>Brak danych<?php }?></td>
-                <td><?php if ((isset($_smarty_tpl->tpl_vars['device']->value['energy_production']))) {
-echo $_smarty_tpl->tpl_vars['device']->value['energy_production'];
+                <td><?php if ((isset($_smarty_tpl->tpl_vars['device']->value['energy_consumed']))) {
+echo $_smarty_tpl->tpl_vars['device']->value['energy_consumed'];
 } else { ?>Brak danych<?php }?></td>
-                <td><?php if ((isset($_smarty_tpl->tpl_vars['device']->value['comment']))) {
-echo $_smarty_tpl->tpl_vars['device']->value['comment'];
-} else { ?>Brak uwag<?php }?></td>
                 <td>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-deviceEdit/<?php echo $_smarty_tpl->tpl_vars['device']->value['id'];?>
+energyEdit/<?php echo $_smarty_tpl->tpl_vars['device']->value['device_name'];?>
 " class="edit_button">Edytuj</a>
-                    <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-deviceDelete/<?php echo $_smarty_tpl->tpl_vars['device']->value['id'];?>
-" class="delete_button">Usuń</a>
+          
                 </td>
             </tr>
             <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </tbody>
-    </table>    
-        
-    <a href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_root;?>
-deviceAdd" class="add_button">Zaktualizuj zużycie</a>
+    </table>
+<?php } else { ?>
+    <p>Brak urządzeń do wyświetlenia</p>
+<?php }?>
+
 
 <?php
 }

@@ -7,6 +7,7 @@ class Message {
     public $text;
     public $type;
 
+    const SUCCESS = 3; 
     const ERROR = 2;
     const WARNING = 1;
     const INFO = 0;
@@ -27,13 +28,19 @@ class Message {
     public function isInfo() {
         return $this->type == Message::INFO;
     }
+    
+    public function isSuccess() {
+            return $this->type == Message::SUCCESS;
+    }
 
     public function getTypeName() {
         switch ($type) {
+             case Message::SUCCESS: return 'success';
             case Message::ERROR: return 'error';
             case Message::WARNING: return 'warning';
             case Message::INFO: return 'info';
         }
     }
 
+  
 }
